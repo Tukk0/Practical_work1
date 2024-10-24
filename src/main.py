@@ -1,3 +1,7 @@
-from function import regex_is_correct
 from function import regex_has_a_special_prefix as checker
-checker("ab + c.aba. * .bac. + . + *", 'a', 2)
+input = input().split(" ")
+regex = input[0]
+letter = input[1]
+k = int(input[2])
+Answer = checker(regex, letter, k)
+print(Answer[0])
