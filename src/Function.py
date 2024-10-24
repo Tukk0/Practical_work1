@@ -1,7 +1,3 @@
-from operator import truediv
-from sys import pycache_prefix
-
-
 def regex_is_correct(regex: str):
     stack1 = list(regex)
     stack2 = []
