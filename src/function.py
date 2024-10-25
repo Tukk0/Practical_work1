@@ -13,6 +13,8 @@ def regex_has_a_special_prefix(regex: str, letter, k: int):
     NodeList = []
     new = ''  # The regular expreesion in normal form
     error = ValueError("Incorrect regular expression presented")
+    if k < 0 or letter not in ['a', 'b', 'c']:
+        raise error
     # Unwind the stack from the beginning
     while len(stack1) > 0:
         elem = stack1.pop(0)
@@ -73,9 +75,12 @@ def regex_has_a_special_prefix(regex: str, letter, k: int):
                     special_p = True
                     prefix_p = True
                     special_l = k*node.special_length
-                else:
+                elif node.prefix_possibility:
                     prefix_p = node.prefix_possibility
                     special_l = node.special_length
+                else:
+                    special_p = True
+                    special_l = 0
                 string = stack2.pop(0)
                 if string[0] != '(' or string[-1] != ')':
                     # Wrap the result in brackets
