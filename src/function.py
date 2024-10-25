@@ -55,8 +55,7 @@ def regex_has_a_special_prefix(regex: str, letter, k: int):
                     # Word1 is of type "x...xy..."
                     elif node1.special_length > 0:
                         special_l = node1.special_length
-                        if special_l >= k:
-                            prefix_p = True
+                        prefix_p = node1.prefix_possibility
                 # Get two elements and add or concatenate them in the order they are written
                 new = stack2.pop(1) + elem + stack2.pop(0)
                 # Get the last two elements
@@ -79,8 +78,9 @@ def regex_has_a_special_prefix(regex: str, letter, k: int):
                 node = NodeList.pop()
                 if node.special_possibility:
                     special_p = True
-                    prefix_p = True
                     special_l = k*node.special_length
+                    if special_l >= k:
+                        prefix_p = True
                 elif node.prefix_possibility:
                     prefix_p = node.prefix_possibility
                     special_l = node.special_length
