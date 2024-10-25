@@ -1,4 +1,4 @@
-from src.function import regex_has_a_special_prefix as checker
+from function import regex_has_a_special_prefix as checker
 
 input = input().split(" ")
 regex = input[0]

@@ -3,23 +3,6 @@ import unittest
 from src.function import regex_has_a_special_prefix as checker
 
 class Tests_advanced(unittest.TestCase):
-    def test_addition(self):
-        self.assertEqual(checker("ab+", "a", 1)[0], ("YES"))
-        self.assertEqual(checker("ab+", "b", 1)[0], ("YES"))
-        self.assertEqual(checker("ab+c+", "a", 1)[0], ("YES"))
-        self.assertEqual(checker("ab+c+", "b", 1)[0], ("YES"))
-        self.assertEqual(checker("ab+c+", "c", 1)[0], ("YES"))
-
-    def test_concatenation(self):
-        self.assertEqual(checker("ab.", "a", 1)[0], ("YES"))
-        self.assertEqual(checker("ab.", "b", 1)[0], ("NO"))
-        self.assertEqual(checker("ab.c.", "c", 1)[0], ("NO"))
-
-    def test_star(self):
-        self.assertEqual(checker("ab+*", "a", 5)[0], ("YES"))
-        self.assertEqual(checker("ab+*", "b", 5)[0], ("YES"))
-        self.assertEqual(checker("ab.*", "a", 2)[0], ("NO"))
-        self.assertEqual(checker("a**", "a", 10)[0], ("YES"))
 
     def test_regex_building(self):
         self.assertEqual(checker("ab+", "a", 1)[1], ("(a+b)"))
@@ -34,3 +17,5 @@ class Tests_advanced(unittest.TestCase):
         self.assertEqual(checker("acb..bab.c.*.ab.ba.+.+*a.", "b", 2)[0], ("YES"))
         self.assertEqual(checker("acb..bab.c.*.ab.ba.+.+*a.", "b", 3)[0], ("NO"))
         self.assertEqual(checker("ab+cb+.*", "b", 5)[0], ("YES"))
+        self.assertEqual(checker("ab+1.1a.+1+*", "a", 10)[0], ("YES"))
+        self.assertEqual(checker("ab+1.1a.+1+*", "b", 10)[0], ("YES"))

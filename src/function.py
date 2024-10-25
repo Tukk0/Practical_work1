@@ -30,6 +30,12 @@ def regex_has_a_special_prefix(regex: str, letter, k: int):
                     prefix_p = True
             node = Node(prefix_p, special_p, special_l)
             NodeList.append(node)
+        elif elem == '1':
+            stack2.insert(0, '1')
+            if k == 0:
+                prefix_p = True
+            node = Node(prefix_p, True, 0)
+            NodeList.append(node)
         elif elem in ['.', '+']:
             if len(stack2) < 2:
                 # Not enough elements to perform the operation
